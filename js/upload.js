@@ -9,7 +9,48 @@
     }();
 
     var populatePieChart = function (data) {
+        $(".box").hide();
+        var ctx = $("#myChart");
+        var negative = _.map(data, function(currentObject) {
+            return _.isEmpty(_.pick(currentObject, "IMPROVE")) ? 0 : 1;
+        });
+        var positive = _.map(data, function(currentObject) {
+            return _.isEmpty(_.pick(currentObject, "HELPFUL")) ? 0: 1;
+        });
 
+        var positiveCount = _.countBy(positive, (ele)=> {
+            return ele > 0;
+        });
+
+        var negativeCount = _.countBy(negative, (ele)=> {
+            return ele > 0;
+        })
+
+        
+        var params = {
+            datasets: [{
+                data: [positiveCount['true'] , negativeCount['true']],
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB"
+                ]
+            }],
+        
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: [
+                'Positive',
+                'Negative'
+            ]
+        };
+        var myDoughnutChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: params
+            
+        });
     };
 
     // applying the effect for every form
@@ -31,11 +72,7 @@
         // automatically submit the form on file select
         $input.on('change', function (e) {
             showFiles(e.target.files);
-
-
             $form.trigger('submit');
-
-
         });
 
 
@@ -101,9 +138,10 @@
                             $form.removeClass('is-uploading');
                         },
                         success: function (data) {
-                            $form.addClass(data.success == true ? 'is-success' : 'is-error');
-                            if (data.success) populatePieChart(data);
-                            if (!data.success) $errorMsg.text(data.error);
+                            console.log("succcess", data);
+                            $form.addClass(data ? 'is-success' : 'is-error');
+                            if (data) populatePieChart(data);
+                            if (!data) $errorMsg.text(data.error);
                         },
                         error: function () {
                             alert('Error. Please, contact the webmaster!');

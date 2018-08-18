@@ -17,7 +17,8 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4="
         crossorigin="anonymous"></script>
-    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -25,7 +26,7 @@
         <div class="row">
             <form class="box" method="POST" action="http://localhost:3000/upload" enctype="multipart/form-data">
                 <div class="box__input">
-                    <input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+                    <input class="box__file" type="file" name="file" id="file" data-multiple-caption="{count} files selected" multiple />
                     <label for="file">
                         <strong>Choose a file</strong>
                         <span class="box__dragndrop"> or drag it here</span>.</label>
@@ -37,7 +38,9 @@
                     <span></span>.</div>
             </form>
         </div>
+        <canvas id="myChart" width="400" height="400"></canvas>
     </div>
+    
     <script src="js/upload.js"></script>
 </body>
 
