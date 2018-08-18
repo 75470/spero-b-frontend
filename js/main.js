@@ -1,11 +1,11 @@
-(function(){
+(function () {
     var settings = {
         "async": true,
         "crossDomain": true,
         "url": "http://localhost:3000/getCommits?repoName=Spero-b&autherName=T37A",
         "method": "GET"
-      }
-      $.ajax(settings).done(function (response) {
+    }
+    $.ajax(settings).done(function (response) {
         let i = 1;
         response.forEach(element => {
             $("#git-info").append(`<tr>
@@ -17,4 +17,5 @@
             </tr>`);
         });
     });
+
 })();

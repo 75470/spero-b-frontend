@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Git Info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Bootstrap Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <!-- Bootstrap Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4="
+        crossorigin="anonymous"></script>
+    
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <form class="box" method="POST" action="http://localhost:3000/upload" enctype="multipart/form-data">
+                <div class="box__input">
+                    <input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+                    <label for="file">
+                        <strong>Choose a file</strong>
+                        <span class="box__dragndrop"> or drag it here</span>.</label>
+                    <button class="box__button" type="submit">Upload</button>
+                </div>
+                <div class="box__uploading">Uploading&hellip;</div>
+                <div class="box__success">Done!</div>
+                <div class="box__error">Error!
+                    <span></span>.</div>
+            </form>
+        </div>
+    </div>
+    <script src="js/upload.js"></script>
+</body>
+
+</html>
